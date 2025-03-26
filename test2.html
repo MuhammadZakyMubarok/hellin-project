@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Solution</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #ffffff;
+            color: #000;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 50px 100px;
+            height: 100vh;
+            position: relative;
+        }
+        .text-content {
+            max-width: 40%;
+        }
+        .text-content h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .text-content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        .cta-button {
+            display: flex;
+            align-items: center;
+            background: #007bff;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 30px;
+            width: fit-content;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .cta-button:hover {
+            background: #0056b3;
+        }
+        .cta-button span {
+            margin-left: 10px;
+            font-size: 20px;
+        }
+        .image-container {
+            position: relative;
+            width: 50%;
+        }
+        .image-container img {
+            width: 100%;
+            height: auto;
+            clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 0% 100%);
+            border-radius: 20px;
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text-content">
+            <h1>CREATE SOFTWARE SOLUTION</h1>
+            <p>At your price business travel solution</p>
+            <a href="#" class="cta-button">Write to us <span>➜</span></a>
+        </div>
+        <div class="image-container">
+            <img src="homepage_background.jpg" alt="City Skyline">
+        </div>
+    </div>
+</body>
+</html>

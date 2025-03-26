@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Dashboard</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            /*width: 100vh;*/
+            /*height: 100vh;*/
+        }
+        .navbar{
+            background-color: #0D3066;
+            height: 80px;
+            color: white;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .sidebar{
+            width: 250px;
+            /*background-color: #FFAB00;*/
+            background-color: #3366CC;
+            display: flex;
+            flex-direction: column;
+            /*justify-content: space-between;*/
+            padding-top: 30px;
+        }
+        .sidebar a{
+            border-radius: 5px;
+            display: block;
+            text-align: left;
+            padding: 10px;
+            margin: 5px 0;
+            text-decoration: none;
+        }
+        .sidebar-text{
+            color: black;
+            background-color: #F5F5F5;
+        }
+        .sidebar-text:hover {
+            background-color: #2C2C2C;
+            color: white;
+        }
+        .main-sidebar{
+            padding: 20px 10px; 
+            display: flex;
+            flex-direction: column;
+        }
+        .logout-sidebar{
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: space-between;
+            padding: 0 10px;
+            padding-top: 190px;
+        }
+        .logout-text{
+            color: white;
+            background-color: red;
+        }
+        .sidebar-profile{
+            padding: 10px;
+            font-size: 20px;
+            background-color: #F5F5F5;
+            color: black;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+        .sidebar-profile:hover {
+            background-color: #2C2C2C;
+            color: white;
+        }
+
+        .container2{
+            display: flex;
+            /*height: 100vh;*/
+        }
+        .content{
+            background: linear-gradient(to bottom, #DFF7DF, white);
+
+            /*background: linear-gradient(to top, #E3F3FB, #456C8B);*/
+            /*background: linear-gradient(to bottom, #A2C2DD , white);*/
+            width: 100%;
+            display: flex;
+            padding: 60px 20px;
+            flex-direction: column;
+            border: 1px solid black;
+        }
+        .footbar{
+            background-color: #2C2C2C;
+            color: white;
+            height: 80px;
+        }
+        .title{
+            padding-left: 15px;
+        }
+        .sidebar i{
+            padding-right: 5px;
+        }
+        .subpage-container{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            border: 1px solid black;
+        }
+        .subpage{
+            width: 300px;
+            height: 400px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            background-color: #B6D5EC ;
+            display: flex;
+            flex-direction: column;
+            /*border: 1px solid black;*/
+            border-radius: 25px;
+            margin: 0 10px;
+        }
+        .subpage h3{
+            color: #0D3066;
+            margin-top: 10px;  
+            text-align: center;
+        }
+        .subpage p{
+            color: #0D3066;
+            margin: 2px 3px;
+            text-align: left;
+            flex-wrap: wrap;
+        }
+        .dashboard-title-container{
+            margin: 2px 3px;
+            border: 1px solid black;
+            height: 400px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .dashboard-title-img{
+            display: flex;
+        }
+        .dashboard-title{
+            color: #0D3066;
+            text-align: left;
+            height: auto;
+            width: 50%;
+        }
+        .dashboard-title h1{
+            text-align: center;
+            padding-bottom: 20px;
+        }
+        .subpage img{
+            width: 270px;
+            height: 150px;
+            margin: 15px 0;
+            border-radius: 25px;
+        }
+        .subpage-title-img{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <h1 class="title">My Website</h1>
+        </div>
+        <div class="container2">
+            <div class="sidebar">
+                <div class="sidebar-profile"><a><i class="bi bi-person-circle"></i>Profile</a></div>
+                <div class="main-sidebar">
+                <a class="sidebar-text" href="#"><i class="bi bi-house-door-fill"></i>Dashboard</a>
+                <a class="sidebar-text" href="#"><i class="bi bi-calendar-plus-fill"></i>Appointments</a>
+                <a class="sidebar-text" href="#"><i class="bi bi-clipboard2-check-fill"></i>Lab Test</a>
+                <a class="sidebar-text" href="#"><i class="bi bi-capsule"></i></i>Prescription</a>
+                <a class="sidebar-text" href="#"><i class="bi bi-envelope-arrow-down-fill"></i></i>Feedback</a>
+                <a class="sidebar-text" href="#"><i class="bi bi-telephone-plus-fill"></i></i>Customer Service</a>
+                </div>
+                <div class="logout-sidebar">
+                    <a class="logout-text" href="#"><i class="bi bi-box-arrow-left"></i>Logout</a>
+                </div>
+            </div>
+            <div class="content">
+                <div class="dashboard-title-container">
+                    <div class="dashboard-title">
+                        <h1>Welcome To Telemedicine</h1>
+                    <p>lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+                        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+                        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+                    </p>
+                    </div>
+                    <div class="dashboard-title-img">
+                        <img src="https://www.iso.org/files/live/sites/isoorg/files/news/insights/healthcare/Healthcare_Evergreen%20-%20Telemedicine%20equipment.svg" alt="telemedicine" width="500" height="400">
+                    </div>
+                </div>
+                <div class="subpage-container">
+                    <div class="subpage">
+                        <div class="subpage-title-img">
+                            <h3>Schedule Your Appointment</h3>
+                            <img src="https://bswh-p-001-delivery.sitecorecontenthub.cloud/api/public/content/6ddd84df68cb4fd7bd86a719cdf8c8ab?v=a682b4c0" alt="appointment">
+                        </div>
+                        <p>lorem ipsum blablbalbalblabalblablablab</p>
+                    </div>
+                    <div class="subpage">
+                        <div class="subpage-title-img">
+                            <h3>Comprehensive Lab Test Results</h3>
+                            <img src="https://media.istockphoto.com/id/498981904/photo/blood-sample.jpg?s=612x612&w=0&k=20&c=USRymv7tF9QzoPM_sxaaOSjjhme4HcrUmkmVCBVBLzw=" alt="testlab">
+                        </div>
+                        <p>lorem ipsum blablbalbalblabalblablablab</p>
+                    </div>
+                    <div class="subpage">
+                        <div class="subpage-title-img">
+                            <h3>Medicine For Your Recovery</h3>
+                            <img src="https://img.freepik.com/premium-photo/sample-prescription-recipe-drug-pills_266247-2162.jpg" alt="recipe">
+                        </div>
+                        <p>lorem ipsum blablbalbalblabalblablablab</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footbar"></div>
+    </div>
+</body>
+</html>

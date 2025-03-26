@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login2</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container{
+            width: 400px;
+            height: 300px;
+            background-color: #F5F5F5;
+            border-radius: 10px;
+            box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+        }
+        .container label{
+            color: #2C2C2C;
+        }
+        .login-label{
+            padding: 20px 0;
+            font-size: 25px;
+            text-align: center;
+        }
+        .form-group{
+            display: flex;
+            flex-direction: column;
+            padding: 5px 20px;
+        }
+        .form-group label{
+            display: block;
+            color: #2C2C2C;
+        }
+        .form-group input{
+            border-radius: 5px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .button-group button{
+            border-radius: 5px;
+            padding: 10px;
+            border: none;
+            width: 42%;
+        }
+        .login{
+            background-color: #007bff;
+            margin-left: 20px;
+        }
+        .button-group button:hover {
+            opacity: 0.8;
+        }
+        .register{
+            background-color: lightgreen;
+            margin-right: 20px;
+        }
+        .form-footer{
+            text-align: center;
+            margin-top: 10px;
+            color: #2C2C2C;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <label class="login-label">Login</label>
+        <form action="#" method="POST">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <div class="button-group">
+                <button type="submit" class="login">Login</button>
+                <button type="button" class="register" onclick="window.location.href='#'">Register</button>
+            </div>
+        </form>
+        <div class="form-footer">
+            <p>Forgot your password? <a href="#">Reset password</a></p>
+        </div>
+        
+</body>
+</html>
