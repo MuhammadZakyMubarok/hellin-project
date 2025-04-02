@@ -270,11 +270,11 @@
             font-weight: bold;
             color: white;
 
-            /*opacity: 0;
+            opacity: 0;
             transform: translateY(50px);
-            animation: p-c-d-c-h1 1s ease-out forwards;*/
+            animation: p-c-d-c-h1 1s ease-out forwards;
         }
-        /*@keyframes p-c-d-c-h1 {
+        @keyframes p-c-d-c-h1 {
             from {
                 opacity: 0;
                 transform: translateY(50px);
@@ -283,18 +283,18 @@
                 opacity: 1;
                 transform: translateY(0);
             }
-        }*/
+        }
 
         .promotion-content-description-container p{
             color: white;
             font-size: 14px;
             margin-top: 10px;
 
-            /*opacity: 0;
+            opacity: 0;
             transform: translateY(50px);
-            animation: fadeUp 0.2s ease-out forwards;*/
+            animation: fadeUp 0.2s ease-out forwards;
         }
-        /*@keyframes fadeUp {
+        @keyframes fadeUp {
             from {
                 opacity: 0;
                 transform: translateY(50px);
@@ -303,7 +303,7 @@
                 opacity: 1;
                 transform: translateY(0);
             }
-        }*/
+        }
 
         .promotion-content-2{
             background: url(p-content2.jpg);
@@ -359,31 +359,20 @@
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 2s ease-out;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
 
         .fade-in.show {
             opacity: 1;
             transform: translateY(0);
         }
-        .slide-in-left {
+        .slide-in {
             opacity: 0;
             transform: translateX(-50px); /* Mulai dari kiri */
-            transition: opacity 0.8s ease-out, transform 2s ease-out;
-        }
-
-        .slide-in-left.show {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .slide-in-right {
-            opacity: 0;
-            transform: translateX(100%); /* Geser ke kanan 100% */
             transition: opacity 0.8s ease-out, transform 1.5s ease-out;
         }
 
-        .slide-in-right.show {
+        .slide-in.show {
             opacity: 1;
             transform: translateX(0);
         }
@@ -404,7 +393,7 @@
         });
 
         document.addEventListener("DOMContentLoaded", function () {
-            const slideElements = document.querySelectorAll(".slide-in-left");
+            const slideElements = document.querySelectorAll(".slide-in");
 
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
@@ -417,23 +406,6 @@
             slideElements.forEach(el => observer.observe(el));
         });
 
-        document.addEventListener("DOMContentLoaded", function () {
-            const elements = document.querySelectorAll(".slide-in-right");
-
-            function checkScroll() {
-                elements.forEach(element => {
-                    const rect = element.getBoundingClientRect();
-                    if (rect.top < window.innerHeight && rect.bottom >= 0) {
-                        element.classList.add("show");
-                    }
-                });
-            }
-
-            window.addEventListener("scroll", checkScroll);
-            checkScroll(); // Mengecek saat pertama kali dimuat
-        });
-
-
     </script>
 </head>
 <body>
@@ -441,8 +413,8 @@
         <nav class="navbar">
             <ul>
                 <li><img src="logo_beji-crop.png" alt="Logo"></li>
+                <li><a href="index.html">Beranda</a></li>
                 <li><a href="#contact">Kontak Layanan</a></li>
-                <li><a href="packet.html">Paket Wisata</a></li>
                 <li><a href="#gallery">Galeri</a></li>
                 <li><a href="#aboutus">Tentang Kami</a></li>
             </ul>
@@ -460,10 +432,10 @@
         
             <section id="description">
                 <div class="description-content-container">
-                    <div class="description-image-container fade-in">
+                    <div class="description-image-container">
                         <img src="gambr rsz.png" alt="Image">
                     </div>
-                    <div class="description-text-content slide-in-right">
+                    <div class="description-text-content">
                         <h1>CREATE SOFTWARE SOLUTION</h1>
                         <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
                             Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
@@ -479,7 +451,7 @@
                         <div class="promotion-content-button-container">
                             <button type="button"><a>Selengkapnya</a></button>
                         </div>
-                        <div class="promotion-content-description-container fade-in">
+                        <div class="promotion-content-description-container">
                             <h1>Title</h1>
                             <p>Lorem Ipsum Lorem Ipsum Lorem </p>
                         </div>
@@ -490,7 +462,7 @@
                         <div class="promotion-content-button-container">
                             <button type="button"><a>Selengkapnya</a></button>
                         </div>
-                        <div class="promotion-content-description-container fade-in">
+                        <div class="promotion-content-description-container">
                             <h1>Title</h1>
                             <p>Lorem Ipsum Lorem Ipsum Lorem </p>
                         </div>
@@ -501,14 +473,14 @@
                         <div class="promotion-content-button-container">
                             <button type="button"><a>Selengkapnya</a></button>
                         </div>
-                        <div class="promotion-content-description-container fade-in">
+                        <div class="promotion-content-description-container">
                             <h1>Title</h1>
                             <p>Lorem Ipsum Lorem Ipsum Lorem </p>
                         </div>
                     </div>
                 </div>
 
-                <div class="promotion-content-description slide-in-left">
+                <div class="promotion-content-description slide-in">
                     <h1>Pick Your <br>Own Journey</h1>
                     <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
                         Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
