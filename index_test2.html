@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beji Tourism Village</title>
+  <style>
+    :root {
+      /* --primary-color: #222B45;
+      --secondary-color: #5A5F6F; */
+      --primary-color: #FFA500;
+      --secondary-color: #FFD700;
+      --highlight-color: white;
+      /* --bg-color: #132B5C; */
+      --bg-color: #547792;
+      --scnd-color: #C88C3A;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--highlight-color);
+    }
+
+    .container{
+        border: 2px solid black;
+        background-color: var(--bg-color);
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: #213448;
+      padding: 0 0;
+      border: 1px solid black;
+
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+
+      width: 100%;
+      /* border: 1px solid black; */
+    }
+
+    .navbar li {
+      margin: 0 10px;
+    }
+
+    .navbar img {
+      width: auto;
+      height: auto;
+      max-height: 100px;
+      object-fit: contain;
+      /* border: 1px solid black; */
+    }
+
+    .navbar a {
+      color: var(--primary-color);
+      text-decoration: none;
+      padding: 8px 16px;
+      font-size: 18px;
+      position: relative;
+    }
+
+    .navbar a::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 0;
+      height: 3px;
+      background: var(--secondary-color);
+      transition: width 0.3s ease, left 0.3s ease;
+    }
+
+    .navbar a:hover::after,
+    .navbar a.active::after {
+      width: 100%;
+      left: 0;
+    }
+
+    .navbar a:hover,
+    .navbar a.active {
+      font-weight: bold;
+    }
+
+    section {
+      /* padding: 60px 20px; */
+      min-height: 600px;
+    }
+    
+    .description-content-container{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 30px;
+        /* border: 1px solid black; */
+    }
+
+    .description-text-content {
+      max-width: 600px;
+    }
+
+    .description-text-content h1 {
+      font-size: 40px;
+      color: var(--highlight-color);
+    }
+
+    .description-text-content p {
+      font-size: 16px;
+      color: var(--secondary-color);
+      margin-top: 20px;
+      line-height: 1.5em;
+    }
+
+    .description-image-container img {
+      width: 100%;
+      max-width: 650px;
+      height: auto;
+    }
+
+    #promotion{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;   
+    }
+    .promotion-content-description {
+      max-width: 500px;
+      text-align: center;
+      border: 1px solid black;
+    }
+
+    .promotion-content-description h1 {
+      font-size: 40px;
+      color: var(--highlight-color);
+    }
+
+    .promotion-content-description p {
+      font-size: 16px;
+      color: var(--secondary-color);
+      margin-top: 20px;
+    }
+
+    /* Carousel Styles */
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      max-width: 1200px;
+      margin: auto;
+      user-select: none;
+      border: 1px solid black;
+      background-color: white;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.3s ease;
+      will-change: transform;
+    }
+    .carousel-item {
+      width: 300px;  /* UBAH UKURAN INI */
+      height: 500px; /* DAN INI JIKA PERLU */
+      flex: 0 0 auto;
+      border-radius: 35px;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+      margin-right: 30px;
+    }
+    .carousel-item .desc {
+      background: rgba(0,0,0,0.5);
+      color: white;
+      padding: 20px;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+    .carousel-item button {
+      background: transparent;
+      border: 2px solid white;
+      border-radius: 25px;
+      padding: 10px 20px;
+      color: white;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: all 0.3s ease;
+    }
+    .carousel-item button:hover { background: white; color: black; }
+
+    .fade-in, .slide-in-left, .slide-in-right {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease-out, transform 1.5s ease-out;
+    }
+
+    .slide-in-left {
+      transform: translateX(-50px);
+    }
+
+    .slide-in-right {
+      transform: translateX(50px);
+    }
+
+    .show {
+      opacity: 1;
+      transform: translateX(0) translateY(0);
+    }
+
+
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <ul>
+      <li><img src="logo_beji-crop.png" alt="Logo"></li>
+      <li><img src="upscalemedia-transformed-crop.png" alt="Logo"></li>
+      <li><a href="#homepage" class="active">Home</a></li>
+      <li><a href="#about_us">About Us</a></li>
+      <li><a href="packet.html">Tourism Package</a></li>
+      <li><a href="#gallery">Galeri</a></li>
+      <li><a href="#contact_us">Contact Us</a></li>
+    </ul>
+  </nav>
+
+    <div class="container">
+        <section id="description">
+            <div class="description-content-container">
+                <div class="description-image-container fade-in">
+                    <img src="gambr rsz.png" alt="Village View">
+                </div>
+                <div class="description-text-content slide-in-right">
+                    <h1>Beji Tourism Village</h1>
+                    <p>Beji Tourism Village is known as "Kampung Tempe" in Batu City, a hub for tempe craftsmen and educational tourism.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="promotion">
+            <div class="promotion-content-description slide-in-left">
+                <h1>Pick Your Own Journey</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nisi luctus.</p>
+            </div>
+            <div class="carousel-container" id="carousel">
+                <div class="carousel-track" id="track">
+                    <!-- 5 cards -->
+                    <div class="carousel-item" style="background-image:url('p-content1.jpg')">
+                        <div class="desc">
+                            <h2>Title 1</h2>
+                            <p>Short description of promotion one.</p>
+                            <button>Read More</button>
+                        </div>
+                    </div>
+                    <div class="carousel-item" style="background-image:url('p-content2.jpg')">
+                        <div class="desc">
+                            <h2>Title 2</h2>
+                            <p>Short description of promotion two.</p>
+                            <button>Read More</button>
+                        </div>
+                    </div>
+                    <div class="carousel-item" style="background-image:url('p-content3.png')">
+                        <div class="desc">
+                            <h2>Title 3</h2>
+                            <p>Short description of promotion three.</p>
+                            <button>Read More</button>
+                        </div>
+                    </div>
+                    <div class="carousel-item" style="background-image:url('p-content4.jpg')">
+                        <div class="desc">
+                            <h2>Title 4</h2>
+                            <p>Short description of promotion four.</p>
+                            <button>Read More</button>
+                        </div>
+                    </div>
+                    <div class="carousel-item" style="background-image:url('p-content5.jpg')">
+                        <div class="desc">
+                            <h2>Title 5</h2>
+                            <p>Short description of promotion five.</p>
+                            <button>Read More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      animatedElements.forEach(el => observer.observe(el));
+    });
+
+    const track = document.getElementById('track');
+    const container = document.getElementById('carousel');
+
+    // Clone first and last two items for looping
+    const items = track.children;
+    const cloneCount = 2; // number of cards to clone at each end
+    const total = items.length;
+    for (let i = 0; i < cloneCount; i++) {
+      // clone last -> front
+      const cloneFirst = items[i].cloneNode(true);
+      track.appendChild(cloneFirst);
+      // clone first -> end
+      const cloneLast = items[total - 1 - i].cloneNode(true);
+      track.insertBefore(cloneLast, track.firstChild);
+    }
+
+    let isDragging = false;
+    let startX, xOffset = 0;
+    let slideWidth = items[0].getBoundingClientRect().width + 30; // width + margin
+
+    // initial position to show first real card
+    let index = cloneCount;
+    track.style.transform = `translateX(${-slideWidth * index}px)`;
+
+    container.addEventListener('pointerdown', e => {
+      isDragging = true;
+      startX = e.pageX;
+      track.style.transition = 'none';
+    });
+    container.addEventListener('pointermove', e => {
+      if (!isDragging) return;
+      const delta = e.pageX - startX;
+      track.style.transform = `translateX(${ -slideWidth * index + delta }px)`;
+    });
+    container.addEventListener('pointerup', e => {
+      isDragging = false;
+      const delta = e.pageX - startX;
+      // determine threshold
+      if (delta > 50) index--;
+      else if (delta < -50) index++;
+      track.style.transition = 'transform 0.3s ease';
+      track.style.transform = `translateX(${-slideWidth * index}px)`;
+    });
+    container.addEventListener('pointerleave', () => container.dispatchEvent(new Event('pointerup')));
+
+    track.addEventListener('transitionend', () => {
+      // loop condition
+      if (index >= total + cloneCount) {
+        index = cloneCount;
+        track.style.transition = 'none';
+        track.style.transform = `translateX(${-slideWidth * index}px)`;
+      } else if (index < cloneCount) {
+        index = total + cloneCount - 1;
+        track.style.transition = 'none';
+        track.style.transform = `translateX(${-slideWidth * index}px)`;
+      }
+    });
+    
+  </script>
+</body>
+</html>

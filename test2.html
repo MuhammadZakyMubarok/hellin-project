@@ -1,526 +1,357 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contoh Navbar Melayang</title>
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beji Tourism Village</title>
+  <style>
+    :root {
+      --primary-color: #222B45;
+      --secondary-color: #5A5F6F;
+      --highlight-color: white;
+    }
 
-        body{
-            background: url(view.jpg);
-            width: 100%;
-            height: 520px;
-            background-position: center;
-            background-size: cover;
-        }
-        .navbar-container {
-            display: flex;
-            justify-content: center;
-            position: -webkit-sticky; /* Untuk dukungan Safari */
-            position: sticky;
-            top: 70px; /* Jarak 30px dari atas */
-            z-index: 1000;
-        }
-        .navbar {
-            width: 1100px;
-            /*background-color: #333;*/
-            background-color: white;
-            padding: 10px 0;
-            border-radius: 30px;
-            flex-direction: column;
-        }
-        .navbar ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: flex-start; /* Tombol berorientasi ke kiri */
-            align-items: center;
-            /*border: 1px solid red;*/
-        }
-        .navbar li {
-            margin: 0 10px;
-        }
-        .navbar li img{
-            width: 150px; 
-            height: 80px;
-        }
-        .navbar a {
-            /*color: white;*/
-            color: #222B45;
-            text-decoration: none;
-            padding: 8px 16px;
-            font-size: 20px;
-            position: relative;
-            display: inline-block;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
-        .navbar a::after{
-            content: "";
-            position: absolute;
-            left: 50%;
-            bottom: 0;
-            width: 0;
-            height: 3px;
-            background: #5A5F6F;
-            transition: width 0.7s ease-in-out, left 0.7s ease-in-out;
-        }
-        .navbar a:hover::after{
-            width: 100%;
-            left: 0;
-        }
-        .navbar a:hover{
-            font-weight: bold;
-        }
-        /*.navbar a:hover {
-            background-color: #575757;
-            border-radius: 4px;
-        }*/
-        .container{
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-        }
-        /*.container img{
-            width: 100%;
-            height: 600px;
-            z-index: 1;
-            top: 0;
-            position: absolute;
-        }*/
-        .welcome-container{
-            display: flex;
-            width: 100%;
-            height: 350px;
-            /*border: 2px solid black;*/
-            justify-content: center;
-            margin-top: 150px;
-        }
-        .welcome-content{
-            width: 750px;
-            height: 350px;
-            /*border: 2px solid black;*/
-        }
-        .welcome-content h1{
-            font-size: 50px;
-            color: white;
-            text-align: center;
+    html {
+      scroll-behavior: smooth;
+    }
 
-            opacity: 0;
-            transform: translateY(50px);
-            animation: fromBelow 2.5s ease-out forwards;
-        }
-        @keyframes fromBelow {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .welcome-content p{
-            font-size: 16px;
-            color: white;
-            text-align: center;
-            line-height: 1.5em;
-            margin-top: 35px;
+    body {
+      background-color: var(--highlight-color);
+    }
 
-            white-space: nowrap;
-            overflow: hidden;
-            animation: typing 3s steps(30, end) forwards;
-        }
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: var(--highlight-color);
+      padding: 10px 0;
+      border: 1px solid black;
+    }
 
-        .description-container{
-            height: 600px;
-            background-color: yellow;
-            border: 3px solid black;
-            /*margin-top: 10px;*/
-        }
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+    }
 
-        .section{
-            height: 600px;
-            background-color: yellow;
-            border: 3px solid black;
-        }
-        .description-content-container{
-            background-color: white;
-            width: 100%;
-            height: 600px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .description-text-content {
-            width: 600px;
-            /*border: 1px solid black;*/
-            margin-right: 25px;
-        }
-        .description-text-content h1 {
-            color: #222B45;
-            font-size: 50px;
-            margin-bottom: 10px;
-        }
-        .description-text-content p {
-            margin: 20px 0;
-            color: #222B45;
-            font-size: 16px;
-            line-height: 1.5em;
-        }
-        
-        .description-image-container {
-            width: 700px; 
-            height: 600px; 
-            /*border: 1px solid black;*/
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-        }
-        .description-image-container img{
-            width: 650px; 
-            height: 550px; 
-            /*border: 1px solid black;*/
-        }
+    .navbar li {
+      margin: 0 10px;
+    }
 
-        .promotion_container{
-            height: 600px;
-            background-color: yellow;
-            border: 3px solid black;
-            /*margin-top: 10px;*/
-        }
-        .promotion-content-container{
-            background-color: white;
-            width: 100%;
-            height: 600px;
-            display: flex;
-            flex-direction: row-reverse;
-            gap: 25px;
-        }
-        .promotion-content{
-            background-color: blue;
-            width: 250px;
-            height: 450px;
-            border-radius: 35px;
-            align-self: center; /* Menempatkan objek di bagian tengah */
-        }
-        .promotion-content-1{
-            background: url(p-content1.jpg);
-            width: 250px;
-            height: 450px;
-            border-radius: 35px;
-            background-position: center;
-            background-size: cover;
-            display: flex;
-            flex-direction: column-reverse;
-        }
-        .promotion-content-button-container{
-            /*border: 1px solid white;*/
-            width: 125px;
-            height: 50px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            margin-left: 30px;
-            margin-bottom: 30px;
-        }
-        .promotion-content-button-container button{
-            border: 1px solid white;
-            background-color: transparent;
-            width: auto;
-            height: 50px;
-            border-radius: 25px;
-            
-        }
-        .promotion-content-button-container a{
-            color: white;
-            margin: 15px 15px;
-            font-weight: bold;
-        }
-        .promotion-content-button-container:hover button {
-            background-color: white;
-        }
+    .navbar img {
+      width: 150px;
+      height: 80px;
+    }
 
-        .promotion-content-button-container:hover a {
-            color: black;
-        }
-        .promotion-content-description-container{
-            /*border: 1px solid white;*/
-            width: 190px;
-            height: 100px;
-            margin: 0 30px;
+    .navbar a {
+      color: var(--primary-color);
+      text-decoration: none;
+      padding: 8px 16px;
+      font-size: 18px;
+      position: relative;
+    }
 
-        }
-        .promotion-content-description-container h1{
-            font-size: 30px;
-            font-weight: bold;
-            color: white;
+    .navbar a::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 0;
+      height: 3px;
+      background: var(--secondary-color);
+      transition: width 0.3s ease, left 0.3s ease;
+    }
 
-            /*opacity: 0;
-            transform: translateY(50px);
-            animation: p-c-d-c-h1 1s ease-out forwards;*/
-        }
-        /*@keyframes p-c-d-c-h1 {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }*/
+    .navbar a:hover::after,
+    .navbar a.active::after {
+      width: 100%;
+      left: 0;
+    }
 
-        .promotion-content-description-container p{
-            color: white;
-            font-size: 14px;
-            margin-top: 10px;
+    .navbar a:hover,
+    .navbar a.active {
+      font-weight: bold;
+    }
 
-            /*opacity: 0;
-            transform: translateY(50px);
-            animation: fadeUp 0.2s ease-out forwards;*/
-        }
-        /*@keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }*/
+    section {
+      /* padding: 60px 20px; */
+      min-height: 600px;
+    }
+    
+    .description-content-container{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 30px;
+        /* border: 1px solid black; */
+    }
 
-        .promotion-content-2{
-            background: url(p-content2.jpg);
-            width: 250px;
-            height: 450px;
-            border-radius: 35px;
-            background-position: center;
-            background-size: cover;
-            display: flex;
-            flex-direction: column-reverse;
-        }
-        .promotion-content-3{
-            background: url(p-content3.png);
-            width: 250px;
-            height: 450px;
-            border-radius: 35px;
-            background-position: center;
-            background-size: cover;
-            display: flex;
-            flex-direction: column-reverse;
-        }
-        .promotion-content-description{
-            /*border: 1px solid black;*/
-            width: 425px;
-            height: 450px;
-            align-self: center;
-            margin-right: auto;
-            margin-left: 75px;
-        }
-        .promotion-content-description h1{
-            margin-top: 50px;
-            color: #222B45;
-            font-size: 50px;
-        }
-        .promotion-content-description p{
-            padding-top: 30px;
-            color: #222B45;
-            font-size: 16px;
-            line-height: 1.5em;
-        }
-        .title{
-            font-weight: bold;
-            font-size: 24px;
-            color: white;
-        }
-        .image-wrapper img {
-            width: 100%;
-            height: 600px;
-            position: absolute;
-            top: 0;
-            z-index: 1;
-        }
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 2s ease-out;
-        }
+    .description-text-content {
+      max-width: 600px;
+    }
 
-        .fade-in.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .slide-in-left {
-            opacity: 0;
-            transform: translateX(-50px); /* Mulai dari kiri */
-            transition: opacity 0.8s ease-out, transform 2s ease-out;
-        }
+    .description-text-content h1 {
+      font-size: 40px;
+      color: var(--primary-color);
+    }
 
-        .slide-in-left.show {
-            opacity: 1;
-            transform: translateX(0);
-        }
+    .description-text-content p {
+      font-size: 16px;
+      color: var(--primary-color);
+      margin-top: 20px;
+      line-height: 1.5em;
+    }
 
-        .slide-in-right {
-            opacity: 0;
-            transform: translateX(100%); /* Geser ke kanan 100% */
-            transition: opacity 0.8s ease-out, transform 1.5s ease-out;
-        }
+    .description-image-container img {
+      width: 100%;
+      max-width: 650px;
+      height: auto;
+    }
 
-        .slide-in-right.show {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    </style>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-        const fadeElements = document.querySelectorAll(".fade-in");
+    #promotion{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
 
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("show");
-                    }
-                });
-            }, { threshold: 0.3 });
+    .promotion-content-description {
+      max-width: 425px;
+      border: 1px solid black;
+    }
 
-            fadeElements.forEach(el => observer.observe(el));
-        });
+    .promotion-content-description h1 {
+      font-size: 40px;
+      color: var(--primary-color);
+    }
 
-        document.addEventListener("DOMContentLoaded", function () {
-            const slideElements = document.querySelectorAll(".slide-in-left");
+    .promotion-content-description p {
+      font-size: 16px;
+      color: var(--primary-color);
+      margin-top: 20px;
+    }
 
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("show");
-                    }
-                });
-            }, { threshold: 0.3 });
+    /* Carousel Styles */
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      max-width: 1000px;
+      margin: auto;
+      user-select: none;
+      border: 1px solid black;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.3s ease;
+      will-change: transform;
+    }
+    .carousel-item {
+      flex: 0 0 300px;
+      margin-right: 30px;
+      height: 500px;
+      border-radius: 35px;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .carousel-item .desc {
+      background: rgba(0,0,0,0.5);
+      color: white;
+      padding: 20px;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+    .carousel-item button {
+      background: transparent;
+      border: 2px solid white;
+      border-radius: 25px;
+      padding: 10px 20px;
+      color: white;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: all 0.3s ease;
+    }
+    .carousel-item button:hover { background: white; color: black; }
 
-            slideElements.forEach(el => observer.observe(el));
-        });
+    .fade-in, .slide-in-left, .slide-in-right {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease-out, transform 1.5s ease-out;
+    }
 
-        document.addEventListener("DOMContentLoaded", function () {
-            const elements = document.querySelectorAll(".slide-in-right");
+    .slide-in-left {
+      transform: translateX(-50px);
+    }
 
-            function checkScroll() {
-                elements.forEach(element => {
-                    const rect = element.getBoundingClientRect();
-                    if (rect.top < window.innerHeight && rect.bottom >= 0) {
-                        element.classList.add("show");
-                    }
-                });
-            }
+    .slide-in-right {
+      transform: translateX(50px);
+    }
 
-            window.addEventListener("scroll", checkScroll);
-            checkScroll(); // Mengecek saat pertama kali dimuat
-        });
+    .show {
+      opacity: 1;
+      transform: translateX(0) translateY(0);
+    }
 
 
-    </script>
+  </style>
 </head>
 <body>
-    <div class="navbar-container">
-        <nav class="navbar">
-            <ul>
-                <li><img src="logo_beji-crop.png" alt="Logo"></li>
-                <li><a href="#contact">Kontak Layanan</a></li>
-                <li><a href="packet.html">Paket Wisata</a></li>
-                <li><a href="#gallery">Galeri</a></li>
-                <li><a href="#aboutus">Tentang Kami</a></li>
-            </ul>
-        </nav>
-    </div>
+  <nav class="navbar">
+    <ul>
+      <li><img src="logo_beji-crop.png" alt="Logo"></li>
+      <li><a href="#homepage" class="active">Home</a></li>
+      <li><a href="#about_us">About Us</a></li>
+      <li><a href="packet.html">Tourism Package</a></li>
+      <li><a href="#gallery">Galeri</a></li>
+      <li><a href="#contact_us">Contact Us</a></li>
+    </ul>
+  </nav>
+
     <div class="container">
-            <div class="welcome-container">
-                <div class="welcome-content">
-                    <h1>Selamat Datang Di <br>Beji Kampung Tempe</h1>
-                    <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-                    </p>
-                        
+        <section id="description">
+            <div class="description-content-container">
+                <div class="description-image-container fade-in">
+                    <img src="gambr rsz.png" alt="Village View">
+                </div>
+                <div class="description-text-content slide-in-right">
+                    <h1>Beji Tourism Village</h1>
+                    <p>Beji Tourism Village is known as "Kampung Tempe" in Batu City, a hub for tempe craftsmen and educational tourism.</p>
                 </div>
             </div>
-        
-            <section id="description">
-                <div class="description-content-container">
-                    <div class="description-image-container fade-in">
-                        <img src="gambr rsz.png" alt="Image">
-                    </div>
-                    <div class="description-text-content slide-in-right">
-                        <h1>CREATE SOFTWARE SOLUTION</h1>
-                        <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-                            Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-                        </p>
-                    </div>
-                </div>
-            </section>
-        
-        <section id="promotion">
-            <div class="promotion-content-container">
-                <div class="promotion-content" style="margin-right: 35px;">
-                    <div class="promotion-content-1">
-                        <div class="promotion-content-button-container">
-                            <button type="button"><a>Selengkapnya</a></button>
-                        </div>
-                        <div class="promotion-content-description-container fade-in">
-                            <h1>Title</h1>
-                            <p>Lorem Ipsum Lorem Ipsum Lorem </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="promotion-content">
-                    <div class="promotion-content-2">
-                        <div class="promotion-content-button-container">
-                            <button type="button"><a>Selengkapnya</a></button>
-                        </div>
-                        <div class="promotion-content-description-container fade-in">
-                            <h1>Title</h1>
-                            <p>Lorem Ipsum Lorem Ipsum Lorem </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="promotion-content">
-                    <div class="promotion-content-3">
-                        <div class="promotion-content-button-container">
-                            <button type="button"><a>Selengkapnya</a></button>
-                        </div>
-                        <div class="promotion-content-description-container fade-in">
-                            <h1>Title</h1>
-                            <p>Lorem Ipsum Lorem Ipsum Lorem </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="promotion-content-description slide-in-left">
-                    <h1>Pick Your <br>Own Journey</h1>
-                    <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-                        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-                        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-                        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-                    </p>
-                </div>
-                
-
-        </div>
         </section>
 
+        <section id="promotion">
+            <div class="promotion-content-description slide-in-left">
+                <h1>Pick Your Own Journey</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nisi luctus.</p>
+            </div>
+            <div class="carousel-container" id="carousel">
+                <div class="carousel-track" id="track">
+                    <!-- 5 cards -->
+                    <div class="carousel-item" style="background-image:url('p-content1.jpg')">
+                        <div class="desc">
+                            <h2>Title 1</h2>
+                            <p>Short description of promotion one.</p>
+                            <button>Read More</button>
+                        </div>
+                    </div>
+                    <div class="carousel-item" style="background-image:url('p-content2.jpg')">
+                        <div class="desc">
+                            <h2>Title 2</h2>
+                            <p>Short description of promotion two.</p>
+                            <button>Read More</button>
+                        </div>
+                    </div>
+                    <div class="carousel-item" style="background-image:url('p-content3.png')">
+                        <div class="desc">
+                            <h2>Title 3</h2>
+                            <p>Short description of promotion three.</p>
+                            <button>Read More</button>
+                        </div>
+                    </div>
+                    <div class="carousel-item" style="background-image:url('p-content4.jpg')">
+                        <div class="desc">
+                            <h2>Title 4</h2>
+                            <p>Short description of promotion four.</p>
+                            <button>Read More</button>
+                        </div>
+                    </div>
+                    <div class="carousel-item" style="background-image:url('p-content5.jpg')">
+                        <div class="desc">
+                            <h2>Title 5</h2>
+                            <p>Short description of promotion five.</p>
+                            <button>Read More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      animatedElements.forEach(el => observer.observe(el));
+    });
+
+    const track = document.getElementById('track');
+    const container = document.getElementById('carousel');
+
+    // Clone first and last two items for looping
+    const items = track.children;
+    const cloneCount = 2; // number of cards to clone at each end
+    const total = items.length;
+    for (let i = 0; i < cloneCount; i++) {
+      // clone last -> front
+      const cloneFirst = items[i].cloneNode(true);
+      track.appendChild(cloneFirst);
+      // clone first -> end
+      const cloneLast = items[total - 1 - i].cloneNode(true);
+      track.insertBefore(cloneLast, track.firstChild);
+    }
+
+    let isDragging = false;
+    let startX, xOffset = 0;
+    let slideWidth = items[0].getBoundingClientRect().width + 30; // width + margin
+
+    // initial position to show first real card
+    let index = cloneCount;
+    track.style.transform = `translateX(${-slideWidth * index}px)`;
+
+    container.addEventListener('pointerdown', e => {
+      isDragging = true;
+      startX = e.pageX;
+      track.style.transition = 'none';
+    });
+    container.addEventListener('pointermove', e => {
+      if (!isDragging) return;
+      const delta = e.pageX - startX;
+      track.style.transform = `translateX(${ -slideWidth * index + delta }px)`;
+    });
+    container.addEventListener('pointerup', e => {
+      isDragging = false;
+      const delta = e.pageX - startX;
+      // determine threshold
+      if (delta > 50) index--;
+      else if (delta < -50) index++;
+      track.style.transition = 'transform 0.3s ease';
+      track.style.transform = `translateX(${-slideWidth * index}px)`;
+    });
+    container.addEventListener('pointerleave', () => container.dispatchEvent(new Event('pointerup')));
+
+    track.addEventListener('transitionend', () => {
+      // loop condition
+      if (index >= total + cloneCount) {
+        index = cloneCount;
+        track.style.transition = 'none';
+        track.style.transform = `translateX(${-slideWidth * index}px)`;
+      } else if (index < cloneCount) {
+        index = total + cloneCount - 1;
+        track.style.transition = 'none';
+        track.style.transform = `translateX(${-slideWidth * index}px)`;
+      }
+    });
+    
+  </script>
 </body>
 </html>
