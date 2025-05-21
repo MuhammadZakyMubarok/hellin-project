@@ -3,12 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
   <title>Beji Tourism Village</title>
   <style>
     :root {
-      --primary-color: #222B45;
-      --secondary-color: #5A5F6F;
+      --primary-color: #FFA500;
+      --secondary-color: #FFD700;
       --highlight-color: white;
+      /* --bg-color: #132B5C;  */
+      --bg-color: #3A90CF;
+      --scnd-color: #C88C3A;
+      /* --navbar-color: #0F2247; */
+      --navbar-color: #015081;
     }
 
     * {
@@ -26,36 +32,65 @@
       background-color: var(--highlight-color);
     }
 
+    .container{
+        background-color: var(--bg-color);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
     .navbar {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background-color: var(--highlight-color);
-      padding: 10px 0;
-      border: 1px solid black;
+      background-color: var(--navbar-color);
+      padding: 0;
+      display: flex;
+      align-items: center;
     }
 
     .navbar ul {
       list-style: none;
       display: flex;
       align-items: center;
-      padding: 0 20px;
+
+      /* width: 100%; */
+      /* border: 1px solid black; */
     }
 
-    .navbar li {
+    .navbar-text{
+        padding: 0 20px;
+    }
+
+    .navbar-text li {
       margin: 0 10px;
     }
 
     .navbar img {
-      width: 150px;
-      height: 80px;
+      width: auto;
+      height: auto;
+      max-height: 100px;
+      object-fit: contain;
+      /* border: 1px solid black; */
+    }
+    .logo-container{
+        display: flex;
+        flex-direction: row;
+        background-color: #FFA500;
+        max-height: 100px;
+        width: 400px;
+    }
+
+    .logo-container li{
+        margin: 20px;
     }
 
     .navbar a {
       color: var(--primary-color);
       text-decoration: none;
       padding: 8px 16px;
-      font-size: 18px;
+      font-size: 20px;
       position: relative;
     }
 
@@ -81,277 +116,216 @@
       font-weight: bold;
     }
 
-    section {
-      /* padding: 60px 20px; */
-      min-height: 600px;
-    }
-    
-    .description-content-container{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
-        gap: 30px;
-        /* border: 1px solid black; */
-    }
-
-    .description-text-content {
-      max-width: 600px;
+    nav .sidebar{
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: 250px;
+      z-index: 999;
+      background-color: rgba(15, 34, 71, 0.8);
+      display: none;
+      flex-direction: column;
+      backdrop-filter: blur(10px);
+      /* align-items: flex-start;
+      justify-content: flex-start; */
     }
 
-    .description-text-content h1 {
-      font-size: 40px;
-      color: var(--primary-color);
-    }
-
-    .description-text-content p {
-      font-size: 16px;
-      color: var(--primary-color);
-      margin-top: 20px;
-      line-height: 1.5em;
-    }
-
-    .description-image-container img {
+    .sidebar li,
+    .sidebar a{
       width: 100%;
-      max-width: 650px;
-      height: auto;
+      margin: 20px 0;
     }
 
-    #promotion{
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
+    nav .menuButton{
+      display: none;
+      justify-content: flex-end;
+      list-style: none;
+      align-items: center;
+      margin-left: auto;
     }
 
-    .promotion-content-description {
-      max-width: 425px;
-      border: 1px solid black;
+    @media(max-width: 800px){
+      .hideOnMobile{
+        display: none;
+      }
     }
-
-    .promotion-content-description h1 {
-      font-size: 40px;
-      color: var(--primary-color);
-    }
-
-    .promotion-content-description p {
-      font-size: 16px;
-      color: var(--primary-color);
-      margin-top: 20px;
-    }
-
-    /* Carousel Styles */
-    .carousel-container {
-      position: relative;
-      overflow: hidden;
-      width: 100%;
-      max-width: 1000px;
-      margin: auto;
-      user-select: none;
-      border: 1px solid black;
-    }
-    .carousel-track {
-      display: flex;
-      transition: transform 0.3s ease;
-      will-change: transform;
-    }
-    .carousel-item {
-      flex: 0 0 300px;
-      margin-right: 30px;
-      height: 500px;
-      border-radius: 35px;
-      overflow: hidden;
-      background-size: cover;
-      background-position: center;
-      position: relative;
-    }
-    .carousel-item .desc {
-      background: rgba(0,0,0,0.5);
-      color: white;
-      padding: 20px;
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-    }
-    .carousel-item button {
-      background: transparent;
-      border: 2px solid white;
-      border-radius: 25px;
-      padding: 10px 20px;
-      color: white;
-      cursor: pointer;
-      margin-top: 10px;
-      transition: all 0.3s ease;
-    }
-    .carousel-item button:hover { background: white; color: black; }
-
-    .fade-in, .slide-in-left, .slide-in-right {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s ease-out, transform 1.5s ease-out;
-    }
-
-    .slide-in-left {
-      transform: translateX(-50px);
-    }
-
-    .slide-in-right {
-      transform: translateX(50px);
-    }
-
-    .show {
-      opacity: 1;
-      transform: translateX(0) translateY(0);
-    }
+    /* @media(min-width: 801px) {
+      .menuButton {
+        display: none;
+      }
+    } */
 
 
+    .content{
+            height: 800px;
+            width: 950px;
+            background-color: white;
+            margin-top: 65px;
+            border: 1px solid black;
+            border-radius: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .image-label-container{
+            border: 1px solid black;
+            height: 400px;
+            width: auto;
+            margin: 25px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .image-label-container img{
+          height: 400px;
+          width: auto;
+        }
+        .label-container{
+          border: 1px solid black;
+          margin: 5px;
+          height: auto;
+          width: 325px;
+          background: rgba(0,0,0,0.5);
+          /* position: absolute; */
+        }
+        .label-container h1 {
+          color: white;
+          margin: 0px 20px;
+          margin-top: 20px;
+        }
+        .label-container P {
+          color: var(--secondary-color);
+          margin: 15px 20px;
+        }
+        .content-description{
+            border: 1px solid black;
+            height: 400px;
+            width: auto;
+            /*margin-right: 30px;*/
+            margin: 25px;
+        }
   </style>
+  <script>
+    function showSidebar(){
+      const sidebar = document.querySelector('.sidebar')
+      sidebar.style.display = 'flex'
+    }
+    function hideSidebar(){
+      const sidebar = document.querySelector('.sidebar')
+      sidebar.style.display = 'none'
+    }
+
+    function updateMenuButtonDisplay() {
+    const menuButton = document.querySelector('.menuButton');
+    if (window.innerWidth <= 800) {
+      menuButton.style.display = 'flex';
+    } else {
+      menuButton.style.display = 'none';
+    }
+  }
+
+  // Jalankan saat halaman selesai dimuat
+  document.addEventListener("DOMContentLoaded", updateMenuButtonDisplay);
+
+  // Jalankan setiap kali ukuran jendela berubah
+  window.addEventListener("resize", updateMenuButtonDisplay);
+  </script>
+
 </head>
 <body>
   <nav class="navbar">
-    <ul>
-      <li><img src="logo_beji-crop.png" alt="Logo"></li>
-      <li><a href="#homepage" class="active">Home</a></li>
+    <ul class="logo-container">
+        <li><img src="logo_beji-crop.png" alt="Logo"></li>
+        <li><img src="upscalemedia-transformed-crop.png" alt="Logo"></li>
+    </ul>
+    <ul class="navbar-text">
+      <li class="hideOnMobile"><a href="index.html">Home</a></li>
+      <li class="hideOnMobile"><a href="#about_us">About Us</a></li>
+      <li class="hideOnMobile"><a href="packet.html" class="active">Tourism Package</a></li>
+      <li class="hideOnMobile"><a href="#gallery">Galeri</a></li>
+      <li class="hideOnMobile"><a href="#contact_us">Contact Us</a></li>
+    </ul>
+    <ul class="menuButton">
+      <li onclick="showSidebar()"><a><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+      </svg></a></li>
+    </ul>
+    <ul class="sidebar">
+      <li onclick="hideSidebar()"><a><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+      </svg></a></li>
+      <li><a href="index.html">Home</a></li>
       <li><a href="#about_us">About Us</a></li>
-      <li><a href="packet.html">Tourism Package</a></li>
+      <li><a href="packet.html" class="active">Tourism Package</a></li>
       <li><a href="#gallery">Galeri</a></li>
       <li><a href="#contact_us">Contact Us</a></li>
     </ul>
+    
   </nav>
 
     <div class="container">
-        <section id="description">
-            <div class="description-content-container">
-                <div class="description-image-container fade-in">
-                    <img src="gambr rsz.png" alt="Village View">
-                </div>
-                <div class="description-text-content slide-in-right">
-                    <h1>Beji Tourism Village</h1>
-                    <p>Beji Tourism Village is known as "Kampung Tempe" in Batu City, a hub for tempe craftsmen and educational tourism.</p>
-                </div>
+        <div class="content">
+            <div class="image-label-container">
+              <img src="paket1.jpeg">
+              <div class="label-container">
+                <h1>PAKET 1 (KESE)</h1>
+                <p>Rp. 25.000,-/Pack</p>
+              </div>
             </div>
-        </section>
+            <div class="content-description">
 
-        <section id="promotion">
-            <div class="promotion-content-description slide-in-left">
-                <h1>Pick Your Own Journey</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nisi luctus.</p>
             </div>
-            <div class="carousel-container" id="carousel">
-                <div class="carousel-track" id="track">
-                    <!-- 5 cards -->
-                    <div class="carousel-item" style="background-image:url('p-content1.jpg')">
-                        <div class="desc">
-                            <h2>Title 1</h2>
-                            <p>Short description of promotion one.</p>
-                            <button>Read More</button>
-                        </div>
-                    </div>
-                    <div class="carousel-item" style="background-image:url('p-content2.jpg')">
-                        <div class="desc">
-                            <h2>Title 2</h2>
-                            <p>Short description of promotion two.</p>
-                            <button>Read More</button>
-                        </div>
-                    </div>
-                    <div class="carousel-item" style="background-image:url('p-content3.png')">
-                        <div class="desc">
-                            <h2>Title 3</h2>
-                            <p>Short description of promotion three.</p>
-                            <button>Read More</button>
-                        </div>
-                    </div>
-                    <div class="carousel-item" style="background-image:url('p-content4.jpg')">
-                        <div class="desc">
-                            <h2>Title 4</h2>
-                            <p>Short description of promotion four.</p>
-                            <button>Read More</button>
-                        </div>
-                    </div>
-                    <div class="carousel-item" style="background-image:url('p-content5.jpg')">
-                        <div class="desc">
-                            <h2>Title 5</h2>
-                            <p>Short description of promotion five.</p>
-                            <button>Read More</button>
-                        </div>
-                    </div>
-                </div>
+        </div>
+        <div class="content">
+            <div class="image-label-container">
+              <img src="paket2.JPG">
+              <div class="label-container">
+                <h1>PAKET 2 (MENJES)</h1>
+                <p>Rp. 35.000,-/Pack</p>
+              </div>
             </div>
-        </section>
+            <div class="content-description">
+              
+            </div>
+        </div>
+        <div class="content">
+            <div class="image-label-container">
+              <img src="paket3.JPG">
+              <div class="label-container">
+                <h1>PAKET 3 (MENDOAN)</h1>
+                <p>Rp. 50.000,-/Pack</p>
+              </div>
+            </div>
+            <div class="content-description">
+
+            </div>
+        </div>
+        <div class="content">
+            <div class="image-label-container">
+              <img src="paket4.JPG">
+              <div class="label-container">
+                <h1>PAKET 4 (GEMBANG DELE)</h1>
+                <p>Rp. 85.000,-/Pack</p>
+              </div>
+            </div>
+            <div class="content-description">
+
+            </div>
+        </div>
+        <div class="content">
+            <div class="image-label-container">
+              <img src="paket5.jpeg">
+              <div class="label-container">
+                <h1>PAKET 5 (BATEJI)</h1>
+                <p>Rp. 35.000,-/Pack</p>
+              </div>
+            </div>
+            <div class="content-description">
+
+            </div>
+        </div>
     </div>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("show");
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.3 });
-
-      animatedElements.forEach(el => observer.observe(el));
-    });
-
-    const track = document.getElementById('track');
-    const container = document.getElementById('carousel');
-
-    // Clone first and last two items for looping
-    const items = track.children;
-    const cloneCount = 2; // number of cards to clone at each end
-    const total = items.length;
-    for (let i = 0; i < cloneCount; i++) {
-      // clone last -> front
-      const cloneFirst = items[i].cloneNode(true);
-      track.appendChild(cloneFirst);
-      // clone first -> end
-      const cloneLast = items[total - 1 - i].cloneNode(true);
-      track.insertBefore(cloneLast, track.firstChild);
-    }
-
-    let isDragging = false;
-    let startX, xOffset = 0;
-    let slideWidth = items[0].getBoundingClientRect().width + 30; // width + margin
-
-    // initial position to show first real card
-    let index = cloneCount;
-    track.style.transform = `translateX(${-slideWidth * index}px)`;
-
-    container.addEventListener('pointerdown', e => {
-      isDragging = true;
-      startX = e.pageX;
-      track.style.transition = 'none';
-    });
-    container.addEventListener('pointermove', e => {
-      if (!isDragging) return;
-      const delta = e.pageX - startX;
-      track.style.transform = `translateX(${ -slideWidth * index + delta }px)`;
-    });
-    container.addEventListener('pointerup', e => {
-      isDragging = false;
-      const delta = e.pageX - startX;
-      // determine threshold
-      if (delta > 50) index--;
-      else if (delta < -50) index++;
-      track.style.transition = 'transform 0.3s ease';
-      track.style.transform = `translateX(${-slideWidth * index}px)`;
-    });
-    container.addEventListener('pointerleave', () => container.dispatchEvent(new Event('pointerup')));
-
-    track.addEventListener('transitionend', () => {
-      // loop condition
-      if (index >= total + cloneCount) {
-        index = cloneCount;
-        track.style.transition = 'none';
-        track.style.transform = `translateX(${-slideWidth * index}px)`;
-      } else if (index < cloneCount) {
-        index = total + cloneCount - 1;
-        track.style.transition = 'none';
-        track.style.transform = `translateX(${-slideWidth * index}px)`;
-      }
-    });
-    
-  </script>
 </body>
 </html>
