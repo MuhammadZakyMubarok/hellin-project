@@ -3,17 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
   <title>Beji Tourism Village</title>
   <style>
     :root {
-      /* --primary-color: #222B45;
-      --secondary-color: #5A5F6F; */
       --primary-color: #FFA500;
       --secondary-color: #FFD700;
       --highlight-color: white;
-      --bg-color: #132B5C; 
+      /* --bg-color: #132B5C;  */
+      --bg-color: #3A90CF;
       --scnd-color: #C88C3A;
-      --navbar-color: #0F2247;
+      /* --navbar-color: #0F2247; */
+      --navbar-color: #015081;
     }
 
     * {
@@ -32,7 +33,6 @@
     }
 
     .container{
-        border: 2px solid black;
         background-color: var(--bg-color);
         display: flex;
         flex-direction: column;
@@ -45,9 +45,7 @@
       top: 0;
       z-index: 1000;
       background-color: var(--navbar-color);
-      padding: 0 0;
-      border: 1px solid black;
-
+      padding: 0;
       display: flex;
       align-items: center;
     }
@@ -118,55 +116,122 @@
       font-weight: bold;
     }
 
+    nav .sidebar{
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: 250px;
+      z-index: 999;
+      background-color: rgba(15, 34, 71, 0.8);
+      display: none;
+      flex-direction: column;
+      backdrop-filter: blur(10px);
+      /* align-items: flex-start;
+      justify-content: flex-start; */
+    }
+
+    .sidebar li,
+    .sidebar a{
+      width: 100%;
+      margin: 20px 0;
+    }
+
+    nav .menuButton{
+      display: none;
+      justify-content: flex-end;
+      list-style: none;
+      align-items: center;
+      margin-left: auto;
+    }
+
+    @media(max-width: 800px){
+      .hideOnMobile{
+        display: none;
+      }
+    }
+    /* @media(min-width: 801px) {
+      .menuButton {
+        display: none;
+      }
+    } */
+
+
     .content{
-            height: 400px;
+            height: 800px;
             width: 950px;
             background-color: white;
             margin-top: 65px;
             border: 1px solid black;
             border-radius: 30px;
             display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .image-label-container{
+            border: 1px solid black;
+            height: 400px;
+            width: auto;
+            margin: 25px;
+            display: flex;
             flex-direction: row;
             justify-content: space-between;
         }
-        .image-content-container{
-            border: 1px solid black;
-            height: auto;
-            width: 450px;
-            margin: 25px;
+        .image-label-container img{
+          height: 400px;
+          width: auto;
+        }
+        .label-container{
+          border: 1px solid black;
+          margin: 5px;
+          height: auto;
+          width: 325px;
+          background: rgba(0,0,0,0.5);
+          /* position: absolute; */
+        }
+        .label-container h1 {
+          color: white;
+          margin: 0px 20px;
+          margin-top: 20px;
+        }
+        .label-container P {
+          color: var(--secondary-color);
+          margin: 15px 20px;
         }
         .content-description{
             border: 1px solid black;
-            height: auto;
-            width: 400px;
+            height: 400px;
+            width: auto;
             /*margin-right: 30px;*/
             margin: 25px;
         }
-
-    .fade-in, .slide-in-left, .slide-in-right {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s ease-out, transform 1.5s ease-out;
-    }
-
-    .slide-in-left {
-      transform: translateX(-50px);
-    }
-
-    .slide-in-right {
-      transform: translateX(50px);
-    }
-
-    .show {
-      opacity: 1;
-      transform: translateX(0) translateY(0);
-    }
-
-    
-
-
-
   </style>
+  <script>
+    function showSidebar(){
+      const sidebar = document.querySelector('.sidebar')
+      sidebar.style.display = 'flex'
+    }
+    function hideSidebar(){
+      const sidebar = document.querySelector('.sidebar')
+      sidebar.style.display = 'none'
+    }
+
+    function updateMenuButtonDisplay() {
+    const menuButton = document.querySelector('.menuButton');
+    if (window.innerWidth <= 800) {
+      menuButton.style.display = 'flex';
+    } else {
+      menuButton.style.display = 'none';
+    }
+  }
+
+  // Jalankan saat halaman selesai dimuat
+  document.addEventListener("DOMContentLoaded", updateMenuButtonDisplay);
+
+  // Jalankan setiap kali ukuran jendela berubah
+  window.addEventListener("resize", updateMenuButtonDisplay);
+  </script>
+
 </head>
 <body>
   <nav class="navbar">
@@ -175,6 +240,22 @@
         <li><img src="upscalemedia-transformed-crop.png" alt="Logo"></li>
     </ul>
     <ul class="navbar-text">
+      <li class="hideOnMobile"><a href="index.html">Home</a></li>
+      <li class="hideOnMobile"><a href="#about_us">About Us</a></li>
+      <li class="hideOnMobile"><a href="packet.html" class="active">Tourism Package</a></li>
+      <li class="hideOnMobile"><a href="#gallery">Galeri</a></li>
+      <li class="hideOnMobile"><a href="#contact_us">Contact Us</a></li>
+    </ul>
+    <ul class="menuButton">
+      <li onclick="showSidebar()"><a><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+      </svg></a></li>
+    </ul>
+    <ul class="sidebar">
+      <li onclick="hideSidebar()"><a><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+      </svg></a></li>
       <li><a href="index.html">Home</a></li>
       <li><a href="#about_us">About Us</a></li>
       <li><a href="packet.html" class="active">Tourism Package</a></li>
@@ -186,45 +267,65 @@
 
     <div class="container">
         <div class="content">
-            <div class="image-content-container">
-
+            <div class="image-label-container">
+              <img src="paket1.jpeg">
+              <div class="label-container">
+                <h1>PAKET 1 (KESE)</h1>
+                <p>Rp. 25.000,-/Pack</p>
+              </div>
             </div>
             <div class="content-description">
 
             </div>
         </div>
         <div class="content">
-            <div class="image-content-container">
-
+            <div class="image-label-container">
+              <img src="paket2.JPG">
+              <div class="label-container">
+                <h1>PAKET 2 (MENJES)</h1>
+                <p>Rp. 35.000,-/Pack</p>
+              </div>
+            </div>
+            <div class="content-description">
+              
+            </div>
+        </div>
+        <div class="content">
+            <div class="image-label-container">
+              <img src="paket3.JPG">
+              <div class="label-container">
+                <h1>PAKET 3 (MENDOAN)</h1>
+                <p>Rp. 50.000,-/Pack</p>
+              </div>
             </div>
             <div class="content-description">
 
             </div>
         </div>
         <div class="content">
-            <div class="image-content-container">
+            <div class="image-label-container">
+              <img src="paket4.JPG">
+              <div class="label-container">
+                <h1>PAKET 4 (GEMBANG DELE)</h1>
+                <p>Rp. 85.000,-/Pack</p>
+              </div>
+            </div>
+            <div class="content-description">
 
+            </div>
+        </div>
+        <div class="content">
+            <div class="image-label-container">
+              <img src="paket5.jpeg">
+              <div class="label-container">
+                <h1>PAKET 5 (BATEJI)</h1>
+                <p>Rp. 35.000,-/Pack</p>
+              </div>
             </div>
             <div class="content-description">
 
             </div>
         </div>
     </div>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("show");
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.3 });
-
-      animatedElements.forEach(el => observer.observe(el));
-    });
-  </script>
 </body>
 </html>
