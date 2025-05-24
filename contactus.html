@@ -36,8 +36,6 @@
         background-color: var(--bg-color);
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
     }
 
     .navbar {
@@ -150,61 +148,66 @@
         display: none;
       }
     }
-    /* @media(min-width: 801px) {
-      .menuButton {
-        display: none;
-      }
-    } */
 
+    .contact-container{
+        width: auto;
+        border: 1px solid red;
+        height: 800px;
+        background: 
+        linear-gradient(to right, var(--bg-color) 50%, transparent 50%),
+        url('Enigma-12.jpeg');
+        background-size: auto 100%, 700px 800px;
+        background-repeat: no-repeat;
+        background-position: left, right;
+        display: flex;
+        /* align-items: center; */
+        flex-direction: column;
+    }
 
-    .content{
-            height: 800px;
-            width: 950px;
-            background-color: white;
-            margin-top: 65px;
-            border: 1px solid black;
-            border-radius: 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .image-label-container{
-            border: 1px solid black;
-            height: 400px;
-            width: auto;
-            margin: 25px;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-        }
-        .image-label-container img{
-          height: 400px;
-          width: auto;
-        }
-        .label-container{
-          border: 1px solid black;
-          margin: 5px;
-          height: auto;
-          width: 325px;
-          background: rgba(0,0,0,0.5);
-          /* position: absolute; */
-        }
-        .label-container h1 {
-          color: white;
-          margin: 0px 20px;
-          margin-top: 20px;
-        }
-        .label-container P {
-          color: var(--secondary-color);
-          margin: 15px 20px;
-        }
-        .content-description{
-            border: 1px solid black;
-            height: 400px;
-            width: auto;
-            /*margin-right: 30px;*/
-            margin: 25px;
-        }
+    .label{
+      /* border: 1px solid black; */
+      width: 300px;
+      height: 50px;
+      margin: 70px;
+    }
+    
+    .label h1{
+      font-size: 50px;
+      color: var(--secondary-color);
+    }
+
+    .maps-container{
+        width: auto;
+        height: 500px;
+        border: 1px solid blue;
+    }
+
+    .sosmed-container{
+      /* border: 2px solid black; */
+      width: 720px;
+      height: 420px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      margin-left: 70px;
+    }
+
+    .section-card{
+      /* border: 1px solid red; */
+      width: 720px;
+      height: 200px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .sosmed-card{
+      background-color: white;
+      width: 340px;
+      height: 200px;
+      border-radius: 25px;
+    }
   </style>
   <script>
     function showSidebar(){
@@ -242,9 +245,9 @@
     <ul class="navbar-text">
       <li class="hideOnMobile"><a href="index.html">Home</a></li>
       <li class="hideOnMobile"><a href="#about_us">About Us</a></li>
-      <li class="hideOnMobile"><a href="packet.html" class="active">Tourism Package</a></li>
+      <li class="hideOnMobile"><a href="packet.html">Tourism Package</a></li>
       <li class="hideOnMobile"><a href="#gallery">Galeri</a></li>
-      <li class="hideOnMobile"><a href="contactus.html">Contact Us</a></li>
+      <li class="hideOnMobile"><a href="#contactus.html" class="active">Contact Us</a></li>
     </ul>
     <ul class="menuButton">
       <li onclick="showSidebar()"><a><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
@@ -258,73 +261,27 @@
       </svg></a></li>
       <li><a href="index.html">Home</a></li>
       <li><a href="#about_us">About Us</a></li>
-      <li><a href="packet.html" class="active">Tourism Package</a></li>
+      <li><a href="packet.html">Tourism Package</a></li>
       <li><a href="#gallery">Galeri</a></li>
-      <li><a href="contactus.html">Contact Us</a></li>
+      <li><a href="#contactus.html" class="active">Contact Us</a></li>
     </ul>
   </nav>
 
     <div class="container">
-        <div class="content">
-            <div class="image-label-container">
-              <img src="paket1.jpeg">
-              <div class="label-container">
-                <h1>PAKET 1 (KESE)</h1>
-                <p>Rp. 25.000,-/Pack</p>
-              </div>
+        <div class="contact-container">
+          <div class="label"><h1>Contact Us</h1></div>
+          <div class="sosmed-container">
+            <div class="section-card">
+              <div class="sosmed-card"></div>
+              <div class="sosmed-card"></div>
             </div>
-            <div class="content-description">
-
+            <div class="section-card">
+              <div class="sosmed-card"></div>
+              <div class="sosmed-card"></div>
             </div>
+          </div>
         </div>
-        <div class="content">
-            <div class="image-label-container">
-              <img src="paket2.JPG">
-              <div class="label-container">
-                <h1>PAKET 2 (MENJES)</h1>
-                <p>Rp. 35.000,-/Pack</p>
-              </div>
-            </div>
-            <div class="content-description">
-              
-            </div>
-        </div>
-        <div class="content">
-            <div class="image-label-container">
-              <img src="paket3.JPG">
-              <div class="label-container">
-                <h1>PAKET 3 (MENDOAN)</h1>
-                <p>Rp. 50.000,-/Pack</p>
-              </div>
-            </div>
-            <div class="content-description">
-
-            </div>
-        </div>
-        <div class="content">
-            <div class="image-label-container">
-              <img src="paket4.JPG">
-              <div class="label-container">
-                <h1>PAKET 4 (GEMBANG DELE)</h1>
-                <p>Rp. 85.000,-/Pack</p>
-              </div>
-            </div>
-            <div class="content-description">
-
-            </div>
-        </div>
-        <div class="content">
-            <div class="image-label-container">
-              <img src="paket5.jpeg">
-              <div class="label-container">
-                <h1>PAKET 5 (BATEJI)</h1>
-                <p>Rp. 35.000,-/Pack</p>
-              </div>
-            </div>
-            <div class="content-description">
-
-            </div>
-        </div>
+        <!-- <div class="maps-container"></div> -->
     </div>
 </body>
 </html>
